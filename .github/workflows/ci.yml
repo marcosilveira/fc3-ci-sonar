@@ -4,22 +4,22 @@ on:
         branches:
             - develop
 jobs:
-    name: sonar test
     check-application:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - name: Set up node 18.7.0
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 18.7.0
-            - name: Install dependencies
-              run: npm install
-            - name: Check application
-              run: CI=true npm test 
+      name: Check application    
+      runs-on: ubuntu-latest
+      steps:
+          - uses: actions/checkout@v3
+          - name: Set up node 18.7.0
+            uses: actions/setup-node@v3
+            with:
+                node-version: 18.7.0
+          - name: Install dependencies
+            run: npm install
+          - name: Check application
+            run: CI=true npm test 
 
-            - name: SonarCloud Scan
-              uses: SonarSource/sonarcloud-github-action@master
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          - name: SonarCloud Scan
+            uses: SonarSource/sonarcloud-github-action@master
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
