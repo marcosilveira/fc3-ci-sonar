@@ -15,7 +15,7 @@ jobs:
             - name: Install dependencies
               run: npm install
             - name: Check application
-              run:  CI=true npm test
+              run:  CI=true npm test 
 
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v1
